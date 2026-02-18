@@ -1,0 +1,1167 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="깔끔하고 신뢰감 있는 프리미엄 헬스장 홈페이지 템플릿. 시설, 프로그램, 가격, 시간표, 상담 문의까지 한 번에." />
+  <meta name="theme-color" content="#0B1220" />
+
+  <title>CleanFit Gym | 깔끔·신뢰 중심 프리미엄 헬스장</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CleanFit Gym | 프리미엄 헬스장" />
+  <meta property="og:description" content="깔끔하고 신뢰감 있는 헬스장. PT/그룹클래스/맞춤 프로그램, 합리적인 멤버십, 쉬운 상담 신청." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1220'/%3E%3Cpath d='M16 34c0-3.3 2.7-6 6-6h4v-4c0-3.3 2.7-6 6-6h0c3.3 0 6 2.7 6 6v4h4c3.3 0 6 2.7 6 6v0c0 3.3-2.7 6-6 6h-4v4c0 3.3-2.7 6-6 6h0c-3.3 0-6-2.7-6-6v-4h-4c-3.3 0-6-2.7-6-6z' fill='%23FFFFFF' opacity='0.9'/%3E%3C/svg%3E" />
+
+  <!-- Fonts (optional) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0B1220;
+      --panel: rgba(255,255,255,0.06);
+      --panel-2: rgba(255,255,255,0.09);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --muted2: rgba(255,255,255,0.55);
+      --line: rgba(255,255,255,0.12);
+      --brand: #61D5FF;   /* 포인트 색 */
+      --brand2:#7CFFB2;   /* 보조 포인트 */
+      --shadow: 0 18px 60px rgba(0,0,0,0.45);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(97,213,255,0.18), transparent 55%),
+        radial-gradient(900px 700px at 80% 20%, rgba(124,255,178,0.14), transparent 55%),
+        radial-gradient(700px 500px at 50% 100%, rgba(255,255,255,0.08), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .chip{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px; border:1px solid var(--line); border-radius:999px;
+      background:rgba(255,255,255,0.04);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .dot{width:8px;height:8px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2))}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.06);
+      color:var(--text);
+      font-weight:600;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,0.09); border-color:rgba(255,255,255,0.18)}
+    .btn.primary{
+      border:none;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      color:#06101a;
+      box-shadow: 0 14px 40px rgba(97,213,255,0.20);
+    }
+    .btn.primary:hover{transform: translateY(-2px)}
+    .btn.small{padding:10px 12px; border-radius:11px; font-size:14px}
+    .btn.ghost{background:transparent}
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:12px;
+      padding:2px 6px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      color:var(--muted);
+      background:rgba(255,255,255,0.04);
+    }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(11,18,32,0.92), rgba(11,18,32,0.65));
+      border-bottom:1px solid rgba(255,255,255,0.10);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      height:68px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-0.02em;
+    }
+    .logo{
+      width:34px;height:34px;border-radius:12px;
+      background: radial-gradient(16px 16px at 30% 30%, rgba(255,255,255,0.55), transparent 55%),
+                  linear-gradient(135deg, rgba(97,213,255,0.95), rgba(124,255,178,0.90));
+      box-shadow: 0 16px 50px rgba(0,0,0,0.35);
+      border:1px solid rgba(255,255,255,0.18);
+      position:relative;
+    }
+    .logo::after{
+      content:"";
+      position:absolute; inset:8px;
+      border-radius:10px;
+      background: rgba(11,18,32,0.55);
+      border:1px solid rgba(255,255,255,0.12);
+    }
+    nav ul{
+      display:flex; align-items:center; gap:14px;
+      list-style:none; margin:0; padding:0;
+    }
+    nav a{
+      padding:10px 10px;
+      border-radius:10px;
+      color:var(--muted);
+      font-weight:600;
+      font-size:14px;
+      transition: background .15s ease, color .15s ease;
+    }
+    nav a:hover{background:rgba(255,255,255,0.06); color:var(--text)}
+    .nav-cta{display:flex; align-items:center; gap:10px}
+    .mobile-toggle{display:none}
+    .mobile-menu{
+      display:none;
+      padding:12px 0 18px;
+    }
+    .mobile-menu a{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:12px 14px;
+      border:1px solid rgba(255,255,255,0.10);
+      border-radius:14px;
+      margin-top:10px;
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
+      font-weight:650;
+    }
+    .mobile-menu small{color:var(--muted2); font-weight:600}
+
+    /* Hero */
+    .hero{
+      padding:72px 0 38px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    .hero h1{
+      margin:14px 0 14px;
+      font-size:44px;
+      line-height:1.12;
+      letter-spacing:-0.035em;
+    }
+    .hero p{
+      margin:0 0 20px;
+      color:var(--muted);
+      font-size:16px;
+      max-width: 58ch;
+    }
+    .hero-actions{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .hero-meta{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .stat{
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.04);
+      min-width: 160px;
+    }
+    .stat strong{display:block; font-size:16px; letter-spacing:-0.02em}
+    .stat span{display:block; color:var(--muted2); font-size:13px; margin-top:4px}
+
+    .hero-card{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(450px 280px at 35% 20%, rgba(97,213,255,0.25), transparent 60%),
+                  radial-gradient(420px 300px at 70% 30%, rgba(124,255,178,0.18), transparent 65%);
+      pointer-events:none;
+      opacity:.95;
+    }
+    .hero-card-inner{
+      position:relative;
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+      gap:14px;
+    }
+    .hero-preview{
+      border-radius: 20px;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(11,18,32,0.55);
+      padding:14px;
+      min-height: 232px;
+    }
+    .mini-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .mini{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      padding:12px;
+    }
+    .mini b{display:flex; align-items:center; gap:10px; font-size:14px}
+    .mini p{margin:8px 0 0; color:var(--muted2); font-size:13px}
+    .icon{
+      width:18px;height:18px; display:inline-block;
+    }
+
+    /* Sections */
+    section{padding:60px 0}
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:18px;
+      margin-bottom:18px;
+    }
+    h2{
+      margin:0;
+      font-size:28px;
+      letter-spacing:-0.03em;
+    }
+    .sub{
+      margin:8px 0 0;
+      color:var(--muted);
+      max-width: 70ch;
+      font-size:15px;
+    }
+
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .grid-2{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
+    .card{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      padding:16px;
+    }
+    .card strong{display:block; font-size:16px; letter-spacing:-0.02em}
+    .card p{margin:10px 0 0; color:var(--muted); font-size:14px}
+    .card .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color:var(--muted);
+      font-size:12px;
+      margin-top:12px;
+    }
+
+    /* Schedule */
+    .schedule-wrap{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      overflow:hidden;
+    }
+    .schedule-controls{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:14px 14px;
+      border-bottom:1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      flex-wrap:wrap;
+    }
+    .seg{
+      display:flex; gap:8px; flex-wrap:wrap;
+    }
+    .seg button{
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color:var(--muted);
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:650;
+      cursor:pointer;
+      transition: background .15s ease, color .15s ease, transform .15s ease, border-color .15s ease;
+    }
+    .seg button:hover{transform: translateY(-1px); background: rgba(255,255,255,0.07); color:var(--text)}
+    .seg button.active{
+      background: linear-gradient(135deg, rgba(97,213,255,0.22), rgba(124,255,178,0.16));
+      color: var(--text);
+      border-color: rgba(255,255,255,0.22);
+    }
+    table{
+      width:100%;
+      border-collapse: collapse;
+      font-size:14px;
+    }
+    th, td{
+      padding:14px 14px;
+      border-bottom:1px solid rgba(255,255,255,0.10);
+      text-align:left;
+      vertical-align:top;
+    }
+    th{color:var(--muted2); font-weight:700; letter-spacing:-0.01em; background: rgba(255,255,255,0.02)}
+    td{color:var(--text)}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color:var(--muted);
+      font-size:12px;
+      font-weight:650;
+    }
+    .badge .dot{width:6px;height:6px}
+    .muted{color:var(--muted); font-size:13px}
+
+    /* Pricing */
+    .price{
+      display:flex; flex-direction:column; gap:10px;
+      padding:18px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      position:relative;
+      overflow:hidden;
+      min-height: 260px;
+    }
+    .price::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(420px 260px at 30% 20%, rgba(97,213,255,0.22), transparent 60%),
+                  radial-gradient(380px 260px at 70% 25%, rgba(124,255,178,0.14), transparent 65%);
+      opacity:.7;
+      pointer-events:none;
+    }
+    .price > *{position:relative}
+    .price h3{margin:0; font-size:18px; letter-spacing:-0.02em}
+    .price .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+      width:max-content;
+    }
+    .price .amount{font-size:30px; font-weight:850; letter-spacing:-0.03em; margin-top:2px}
+    .price ul{margin:6px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px}
+    .price li{display:flex; gap:10px; color:var(--muted); font-size:14px}
+    .check{
+      width:18px;height:18px; border-radius:6px;
+      background: linear-gradient(135deg, rgba(97,213,255,0.65), rgba(124,255,178,0.55));
+      display:inline-flex; align-items:center; justify-content:center;
+      color:#07121c; font-weight:900; font-size:12px;
+      flex:0 0 auto;
+      margin-top:1px;
+    }
+
+    /* Testimonials */
+    .quote{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      padding:18px;
+    }
+    .quote p{margin:0; color:var(--text); font-size:15px}
+    .quote footer{margin-top:12px; color:var(--muted2); font-size:13px}
+
+    /* FAQ */
+    details{
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
+      padding:14px 14px;
+    }
+    details + details{margin-top:10px}
+    summary{
+      cursor:pointer;
+      font-weight:750;
+      letter-spacing:-0.01em;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0; color:var(--muted); font-size:14px}
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .form{
+      display:flex; flex-direction:column; gap:10px;
+    }
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(11,18,32,0.55);
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+    }
+    textarea{min-height:120px; resize:vertical}
+    label{font-size:13px; color:var(--muted2); font-weight:650}
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .note{
+      font-size:12px;
+      color:var(--muted2);
+      margin-top:4px;
+    }
+
+    /* Footer */
+    footer{
+      padding:34px 0 48px;
+      border-top:1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.12);
+    }
+    .foot{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:20px;
+      flex-wrap:wrap;
+    }
+    .foot small{color:var(--muted2)}
+    .foot-links{display:flex; gap:12px; flex-wrap:wrap}
+    .foot-links a{color:var(--muted); padding:8px 10px; border-radius:10px}
+    .foot-links a:hover{background:rgba(255,255,255,0.06); color:var(--text)}
+
+    /* Utilities */
+    .divider{height:1px; background: rgba(255,255,255,0.10); margin:18px 0}
+    .right{display:flex; align-items:center; justify-content:flex-end; gap:10px; flex-wrap:wrap}
+
+    /* Responsive */
+    @media (max-width: 940px){
+      .hero-grid{grid-template-columns: 1fr; }
+      .hero h1{font-size:38px}
+      .grid-3{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns: 1fr}
+      .contact{grid-template-columns: 1fr}
+      nav ul{display:none}
+      .mobile-toggle{display:inline-flex}
+      .mobile-menu{display:none}
+      .mobile-menu.open{display:block}
+    }
+    @media (max-width: 520px){
+      .hero{padding-top:56px}
+      .hero h1{font-size:34px}
+      .row{grid-template-columns: 1fr}
+      .stat{min-width: unset; width:100%}
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "CleanFit Gym",
+    "description": "깔끔하고 신뢰감 있는 프리미엄 헬스장. PT/그룹클래스/맞춤 프로그램 제공.",
+    "telephone": "+82-10-0000-0000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "주소를 입력하세요",
+      "addressLocality": "도시",
+      "addressRegion": "지역",
+      "postalCode": "00000",
+      "addressCountry": "KR"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "06:00", "closes": "23:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "09:00", "closes": "21:00" }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="CleanFit Gym 홈">
+          <span class="logo" aria-hidden="true"></span>
+          <span>CleanFit Gym</span>
+        </a>
+
+        <nav aria-label="메인 메뉴">
+          <ul>
+            <li><a href="#about">소개</a></li>
+            <li><a href="#programs">프로그램</a></li>
+            <li><a href="#schedule">시간표</a></li>
+            <li><a href="#pricing">가격</a></li>
+            <li><a href="#contact">상담</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-cta">
+          <button class="btn small ghost mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="mobileMenu">
+            메뉴
+            <span class="kbd">M</span>
+          </button>
+          <a class="btn small" href="#pricing">멤버십 보기</a>
+          <a class="btn small primary" href="#contact">무료 상담</a>
+        </div>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#about"><span>소개</span><small>시설·철학</small></a>
+        <a href="#programs"><span>프로그램</span><small>PT·클래스</small></a>
+        <a href="#schedule"><span>시간표</span><small>주간 운영</small></a>
+        <a href="#pricing"><span>가격</span><small>멤버십</small></a>
+        <a href="#contact"><span>상담</span><small>문의·방문</small></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <span class="chip"><span class="dot" aria-hidden="true"></span> 깔끔한 공간 · 검증된 코칭 · 꾸준한 변화</span>
+            <h1>신뢰가 쌓이는 운동 습관,<br/>CleanFit에서 시작하세요.</h1>
+            <p>
+              불필요한 과장 없이, <b>정돈된 시설</b>과 <b>체계적인 코칭</b>으로 결과를 만듭니다.
+              목표·체형·생활패턴을 기반으로 “지속 가능한 루틴”을 설계해 드립니다.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#contact">
+                <span aria-hidden="true">⚡</span> 무료 상담 신청
+              </a>
+              <a class="btn" href="#programs">
+                <span aria-hidden="true">📋</span> 프로그램 보기
+              </a>
+              <a class="btn" href="#schedule">
+                <span aria-hidden="true">🗓️</span> 시간표 확인
+              </a>
+            </div>
+
+            <div class="hero-meta" role="list" aria-label="핵심 지표">
+              <div class="stat" role="listitem">
+                <strong>1:1 맞춤 설계</strong>
+                <span>체형·목표·부상 이력 기반</span>
+              </div>
+              <div class="stat" role="listitem">
+                <strong>정돈된 운영</strong>
+                <span>청결·안전·동선 최적화</span>
+              </div>
+              <div class="stat" role="listitem">
+                <strong>데이터 기반</strong>
+                <span>기록·피드백·루틴 개선</span>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+            <p class="muted">
+              <b>포트폴리오용 GitHub Pages</b> 템플릿으로도 적합합니다. 텍스트/주소/연락처만 바꾸면 바로 사용 가능합니다.
+            </p>
+          </div>
+
+          <div class="hero-card" aria-label="시설/서비스 미리보기">
+            <div class="hero-card-inner">
+              <div class="hero-preview">
+                <div class="chip"><span class="dot" aria-hidden="true"></span> 오늘의 추천 루틴</div>
+                <div class="mini-grid">
+                  <div class="mini">
+                    <b>
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 13V7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M4 13h16l-1.5 6H5.5L4 13Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      </svg>
+                      근력 (45분)
+                    </b>
+                    <p>스쿼트·벤치·로우, 핵심 3대 구성</p>
+                  </div>
+                  <div class="mini">
+                    <b>
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 19c4-8 8-8 12 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M4 10c3-5 13-5 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M8 13c2-3 6-3 8 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                      컨디셔닝 (20분)
+                    </b>
+                    <p>코어·호흡·가동성으로 마무리</p>
+                  </div>
+                  <div class="mini">
+                    <b>
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M8 7h8M9 7v10a3 3 0 0 0 6 0V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M6 11h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                      안전 우선
+                    </b>
+                    <p>자세·호흡·중량 상승 단계화</p>
+                  </div>
+                  <div class="mini">
+                    <b>
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 21s7-4.5 7-10a4 4 0 0 0-7-2.5A4 4 0 0 0 5 11c0 5.5 7 10 7 10Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      </svg>
+                      루틴 유지
+                    </b>
+                    <p>주 2~3회 현실적인 플랜 제공</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="right">
+                <a class="btn small" href="#pricing">가격 안내</a>
+                <a class="btn small primary" href="#contact">체험 예약</a>
+              </div>
+
+              <p class="muted" style="margin:0">
+                * 실제 운영 정보(주소/전화/가격)는 하단에서 자유롭게 수정하시면 됩니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>소개</h2>
+            <p class="sub">과장된 홍보보다, <b>정돈된 시스템</b>과 <b>꾸준한 결과</b>로 신뢰를 쌓는 헬스장입니다.</p>
+          </div>
+          <div class="right">
+            <span class="chip"><span class="dot" aria-hidden="true"></span> Clean · Safe · Consistent</span>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <strong>청결과 안전</strong>
+            <p>기구 동선, 위생 관리, 환기 기준을 정해 운영합니다. 누구나 편안하게 운동할 수 있는 환경을 우선합니다.</p>
+            <span class="pill">✅ 매일 체크리스트 운영</span>
+          </div>
+          <div class="card">
+            <strong>체계적 코칭</strong>
+            <p>목표 설정 → 측정 → 루틴 설계 → 피드백의 흐름으로 진행합니다. “느낌”이 아닌 “근거”를 남깁니다.</p>
+            <span class="pill">📈 기록 기반 피드백</span>
+          </div>
+          <div class="card">
+            <strong>지속 가능한 루틴</strong>
+            <p>바쁜 일정에서도 유지 가능한 주간 계획을 제안합니다. 단기 몰입보다 장기 습관을 설계합니다.</p>
+            <span class="pill">🧩 현실적인 주간 플랜</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section id="programs">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>프로그램</h2>
+            <p class="sub">PT부터 그룹 클래스까지, 목표에 맞게 선택하실 수 있도록 구성했습니다.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <strong>1:1 퍼스널 트레이닝</strong>
+            <p>체형·부상 이력·운동 경험을 바탕으로, 안전한 자세와 점진적 과부하를 설계합니다.</p>
+            <span class="pill">추천: 체중 감량·근력 향상</span>
+          </div>
+          <div class="card">
+            <strong>소그룹 클래스</strong>
+            <p>동기부여가 필요한 분께 적합합니다. 기본기 위주의 서킷·컨디셔닝을 진행합니다.</p>
+            <span class="pill">추천: 루틴 형성·체력 향상</span>
+          </div>
+          <div class="card">
+            <strong>컨디셔닝/재활 보조</strong>
+            <p>통증 관리, 가동성, 코어 안정화 중심으로 진행합니다. 무리한 강도는 지양합니다.</p>
+            <span class="pill">추천: 허리·어깨 불편</span>
+          </div>
+        </div>
+
+        <div style="margin-top:14px" class="grid-2">
+          <div class="card">
+            <strong>초보자 온보딩 (첫 달)</strong>
+            <p>기구 사용법, 호흡·코어, 기본 6가지 동작 패턴을 익히고, 개인 루틴을 함께 만듭니다.</p>
+          </div>
+          <div class="card">
+            <strong>식단/생활 습관 가이드</strong>
+            <p>극단적 식단 대신, 지속 가능한 식사 습관을 안내합니다. (개인 상황에 따라 맞춤 조정)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>시간표</h2>
+            <p class="sub">버튼으로 요일을 선택하면 해당 요일 프로그램만 표시됩니다.</p>
+          </div>
+        </div>
+
+        <div class="schedule-wrap">
+          <div class="schedule-controls">
+            <div class="seg" role="tablist" aria-label="요일 필터">
+              <button class="active" data-day="ALL" type="button">전체</button>
+              <button data-day="MON" type="button">월</button>
+              <button data-day="TUE" type="button">화</button>
+              <button data-day="WED" type="button">수</button>
+              <button data-day="THU" type="button">목</button>
+              <button data-day="FRI" type="button">금</button>
+              <button data-day="SAT" type="button">토</button>
+              <button data-day="SUN" type="button">일</button>
+            </div>
+            <div class="muted">
+              운영: 평일 06:00–23:00 · 주말 09:00–21:00
+            </div>
+          </div>
+
+          <table aria-label="주간 프로그램 시간표">
+            <thead>
+              <tr>
+                <th style="width:120px;">시간</th>
+                <th>프로그램</th>
+                <th style="width:220px;">안내</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleBody">
+              <tr data-day="MON">
+                <td>07:00</td>
+                <td><span class="badge"><span class="dot"></span> 모닝 컨디셔닝</span> 기초 가동성·코어</td>
+                <td class="muted">초보자 환영</td>
+              </tr>
+              <tr data-day="TUE">
+                <td>12:30</td>
+                <td><span class="badge"><span class="dot"></span> 점심 서킷</span> 전신 체력</td>
+                <td class="muted">45분</td>
+              </tr>
+              <tr data-day="WED">
+                <td>19:30</td>
+                <td><span class="badge"><span class="dot"></span> 소그룹 클래스</span> 근력 기본기</td>
+                <td class="muted">예약 권장</td>
+              </tr>
+              <tr data-day="THU">
+                <td>20:00</td>
+                <td><span class="badge"><span class="dot"></span> 힙/하체 집중</span> 하체 패턴</td>
+                <td class="muted">중급</td>
+              </tr>
+              <tr data-day="FRI">
+                <td>19:00</td>
+                <td><span class="badge"><span class="dot"></span> 컨디셔닝+</span> 유산소·코어</td>
+                <td class="muted">초중급</td>
+              </tr>
+              <tr data-day="SAT">
+                <td>10:30</td>
+                <td><span class="badge"><span class="dot"></span> 주말 부트캠프</span> 전신 서킷</td>
+                <td class="muted">60분</td>
+              </tr>
+              <tr data-day="SUN">
+                <td>16:00</td>
+                <td><span class="badge"><span class="dot"></span> 스트레칭 클래스</span> 회복·가동성</td>
+                <td class="muted">부담 없음</td>
+              </tr>
+              <tr data-day="ALL">
+                <td>상시</td>
+                <td><span class="badge"><span class="dot"></span> 1:1 PT</span> 트레이너와 일정 조율</td>
+                <td class="muted">개인 맞춤</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="note">
+          * 시간표는 예시입니다. 실제 운영에 맞게 행을 추가/삭제하시면 됩니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>가격</h2>
+            <p class="sub">불필요한 조건 없이, 이해하기 쉬운 구성으로 안내드립니다.</p>
+          </div>
+          <div class="right">
+            <a class="btn small" href="#contact">견적/상담</a>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="price" aria-label="베이직 멤버십">
+            <span class="tag">BASIC</span>
+            <h3>헬스 멤버십</h3>
+            <div class="amount">월 79,000원</div>
+            <ul>
+              <li><span class="check">✓</span> 헬스장 자유 이용</li>
+              <li><span class="check">✓</span> 오리엔테이션 1회</li>
+              <li><span class="check">✓</span> 기본 루틴 가이드</li>
+            </ul>
+            <div class="right" style="margin-top:auto">
+              <a class="btn small primary" href="#contact">가입 상담</a>
+            </div>
+          </div>
+
+          <div class="price" aria-label="스탠다드 플랜">
+            <span class="tag">STANDARD</span>
+            <h3>헬스 + 클래스</h3>
+            <div class="amount">월 129,000원</div>
+            <ul>
+              <li><span class="check">✓</span> 헬스장 자유 이용</li>
+              <li><span class="check">✓</span> 소그룹 클래스 월 4회</li>
+              <li><span class="check">✓</span> 월간 체크(기록/루틴)</li>
+            </ul>
+            <div class="right" style="margin-top:auto">
+              <a class="btn small primary" href="#contact">체험 문의</a>
+            </div>
+          </div>
+
+          <div class="price" aria-label="프리미엄 PT">
+            <span class="tag">PREMIUM</span>
+            <h3>퍼스널 트레이닝</h3>
+            <div class="amount">상담 후 안내</div>
+            <ul>
+              <li><span class="check">✓</span> 목표/체형 분석</li>
+              <li><span class="check">✓</span> 주간 루틴 설계</li>
+              <li><span class="check">✓</span> 기록 기반 피드백</li>
+            </ul>
+            <div class="right" style="margin-top:auto">
+              <a class="btn small primary" href="#contact">무료 상담</a>
+            </div>
+          </div>
+        </div>
+
+        <p class="note">* 금액은 예시입니다. 실제 가격 정책에 맞게 수정하시면 됩니다.</p>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>후기</h2>
+            <p class="sub">“과장 없이, 꾸준히 좋아지는 느낌”을 목표로 합니다.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="quote">
+            <p>“시설이 깔끔해서 운동 집중이 잘 됩니다. 루틴도 현실적으로 잡아주셔서 꾸준히 하게 됐습니다.”</p>
+            <footer>— 회원 A · 3개월차</footer>
+          </div>
+          <div class="quote">
+            <p>“자세를 정말 꼼꼼히 봐주십니다. 무리하지 않게 중량을 올리는 방식이 신뢰가 갔습니다.”</p>
+            <footer>— 회원 B · PT 12회</footer>
+          </div>
+          <div class="quote">
+            <p>“기록을 남기고 피드백을 주셔서 변화가 눈에 보입니다. ‘감’이 아니라 근거가 있어 좋습니다.”</p>
+            <footer>— 회원 C · 6개월차</footer>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>자주 묻는 질문</h2>
+            <p class="sub">문의가 많았던 내용을 정리했습니다. 추가 질문은 상담으로 도와드리겠습니다.</p>
+          </div>
+        </div>
+
+        <details>
+          <summary>초보자도 시작할 수 있나요? <span aria-hidden="true">＋</span></summary>
+          <p>가능합니다. 기구 사용법과 기본 동작부터 단계적으로 안내합니다. 무리한 강도를 권하지 않습니다.</p>
+        </details>
+        <details>
+          <summary>PT는 어떤 방식으로 진행되나요? <span aria-hidden="true">＋</span></summary>
+          <p>목표/체형/부상 이력을 확인한 뒤, 루틴을 설계하고 기록 기반 피드백을 제공합니다. “지속 가능한 루틴”을 우선합니다.</p>
+        </details>
+        <details>
+          <summary>체험이나 상담은 어떻게 신청하나요? <span aria-hidden="true">＋</span></summary>
+          <p>아래 상담 폼을 작성하시면 확인 후 연락드립니다. 빠른 문의는 전화/메신저 링크로도 가능합니다.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>상담 및 방문</h2>
+            <p class="sub">방문 전 간단한 상담을 진행하면 목표에 맞는 플랜을 더 빠르게 안내드릴 수 있습니다.</p>
+          </div>
+          <div class="right">
+            <a class="btn small" href="tel:+821000000000">전화</a>
+            <a class="btn small" href="mailto:hello@cleanfit.example">이메일</a>
+          </div>
+        </div>
+
+        <div class="contact">
+          <div class="card">
+            <strong>상담 신청</strong>
+            <p class="muted" style="margin-top:8px">
+              아래 입력 후 <b>“상담 요청 보내기”</b>를 누르시면 이메일로 전송됩니다. (메일 주소는 하단 스크립트에서 변경 가능)
+            </p>
+
+            <div class="divider"></div>
+
+            <form class="form" id="leadForm">
+              <div class="row">
+                <div>
+                  <label for="name">이름</label>
+                  <input id="name" name="name" placeholder="예: 홍길동" autocomplete="name" required>
+                </div>
+                <div>
+                  <label for="phone">연락처</label>
+                  <input id="phone" name="phone" placeholder="예: 010-1234-5678" autocomplete="tel" required>
+                </div>
+              </div>
+
+              <div class="row">
+                <div>
+                  <label for="goal">목표</label>
+                  <select id="goal" name="goal" required>
+                    <option value="" selected disabled>선택하세요</option>
+                    <option>체중 감량</option>
+                    <option>근력/근비대</option>
+                    <option>체력/컨디셔닝</option>
+                    <option>자세/통증 관리</option>
+                    <option>기타</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="time">희망 시간대</label>
+                  <select id="time" name="time" required>
+                    <option value="" selected disabled>선택하세요</option>
+                    <option>오전</option>
+                    <option>점심</option>
+                    <option>오후</option>
+                    <option>저녁</option>
+                    <option>상관없음</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="message">추가 내용</label>
+                <textarea id="message" name="message" placeholder="운동 경험, 부상 이력, 원하는 방향 등을 적어주시면 더 정확히 안내드립니다."></textarea>
+                <div class="note">* 개인정보는 상담 목적 외 사용하지 않는다는 문구를 운영 정책에 맞게 추가하시면 좋습니다.</div>
+              </div>
+
+              <div class="right">
+                <button class="btn primary" type="submit">상담 요청 보내기</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="card">
+            <strong>오시는 길</strong>
+            <p style="margin-top:8px" class="muted">
+              주소/지도는 예시입니다. 실제 위치로 변경하시면 됩니다.
+            </p>
+
+            <div class="divider"></div>
+
+            <div class="grid-2">
+              <div class="card" style="padding:14px">
+                <strong style="font-size:14px">주소</strong>
+                <p class="muted" style="margin-top:8px">
+                  서울특별시 ○○구 ○○로 00 (예시)<br/>
+                  <span class="muted2">주차: 건물 지하 1~2층 (예시)</span>
+                </p>
+              </div>
+              <div class="card" style="padding:14px">
+                <strong style="font-size:14px">운영 시간</strong>
+                <p class="muted" style="margin-top:8px">
+                  평일 06:00–23:00<br/>
+                  주말 09:00–21:00<br/>
+                  <span class="muted2">공휴일: 변동 운영</span>
+                </p>
+              </div>
+            </div>
+
+            <div style="height:14px"></div>
+
+            <div class="schedule-wrap" style="border-radius:18px">
+              <!-- 지도 iframe 예시 (원하시면 실제 링크로 변경) -->
+              <iframe
+                title="지도 (예시)"
+                src="https://www.google.com/maps?q=Seoul&output=embed"
+                style="width:100%; height:260px; border:0;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+
+            <p class="note">
+              * 지도 대신 네이버 지도/카카오 지도 iframe으로 교체하셔도 됩니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>
+          <div class="brand" style="gap:10px">
+            <span class="logo" aria-hidden="true"></span>
+            <span>CleanFit Gym</span>
+          </div>
+          <p class="muted" style="margin:10px 0 0; max-width:70ch">
+            깔끔함과 신뢰를 우선으로, 지속 가능한 운동 습관을 만드는 공간입니다.
+          </p>
+          <small>© <span id="year"></span> CleanFit Gym. All rights reserved.</small>
+        </div>
+
+        <div class="foot-links" aria-label="푸터 링크">
+          <a href="#about">소개</a>
+          <a href="#programs">프로그램</a>
+          <a href="#schedule">시간표</a>
+          <a href="#pricing">가격</a>
+          <a href="#contact">상담</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ====== 설정(원하시는 값으로 변경) ======
+    const CONTACT_EMAIL = "hello@cleanfit.example"; // 상담 메일 수신 주소
+    const KAKAO_LINK = "";  // 예: "https://open.kakao.com/o/xxxxxx"
+    const INSTAGRAM_LINK = ""; // 예: "https://instagram.com/cleanfitgym"
+    // ======================================
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const toggleBtn = document.getElementById("mobileToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener("click", () => {
+        const open = mobileMenu.classList.toggle("open");
+        toggleBtn.setAttribute("aria-expanded", String(open));
+      });
+
+      // Keyboard shortcut: M
+      window.addEventListener("keydown", (e) => {
+        if (e.key.toLowerCase() === "m" && (e.ctrlKey || e.metaKey)) {
+          e.preventDefault();
+          const open = mobileMenu.classList.toggle("open");
+          toggleBtn.setAttribute("aria-expanded", String(open));
+        }
+      });
+    }
+
+    // Close mobile menu on link click
+    mobileMenu?.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        toggleBtn?.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Schedule day filter
+    const segButtons = document.querySelectorAll(".seg button");
+    const scheduleRows = Array.from(document.querySelectorAll("#scheduleBody tr"));
+
+    function applyDayFilter(day){
+      segButtons.forEach(b => b.classList.toggle("active", b.dataset.day === day));
+      scheduleRows.forEach(row => {
+        const rowDay = row.getAttribute("data-day");
+        const show = (day === "ALL") || (rowDay === day) || (rowDay === "ALL");
+        row.style.display = show ? "" : "none";
+      });
+    }
+
+    segButtons.forEach(btn => {
+      btn.addEventListener("click", () => applyDayFilter(btn.dataset.day));
+    });
+
+    // Lead form -> mailto
+    const leadForm = document.getElementById("leadForm");
+    leadForm?.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const goal = document.getElementById("goal").value;
+      const time = document.getElementById("time").value;
+      const message = document.getElementById("message").value.trim();
+
+      const subject = encodeURIComponent(`[상담 신청] ${name} / ${goal}`);
+      const body = encodeURIComponent(
+`상담 신청 내용입니다.
+
+- 이름: ${name}
+- 연락처: ${phone}
+- 목표: ${goal}
+- 희망 시간대: ${time}
+
+- 추가 내용:
+${message || "(없음)"}
+
+(이 메일은 홈페이지 상담 폼을 통해 작성되었습니다.)`
+      );
+
+      const mailto = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+    });
+
+    // Optional: add quick links if configured
+    // (원하시면 버튼을 더 붙이는 형태로 확장 가능합니다.)
+  </script>
+</body>
+</html>
